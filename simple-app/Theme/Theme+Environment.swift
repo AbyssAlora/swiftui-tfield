@@ -45,7 +45,7 @@ struct Theme {
 }
 
 private struct ThemeKey: EnvironmentKey {
-    static let defaultValue: Theme = .light
+    static let defaultValue: Theme = .default
 }
 
 extension EnvironmentValues {

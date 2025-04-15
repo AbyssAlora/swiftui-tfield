@@ -9,21 +9,18 @@ import SwiftUI
 import Combine
 
 class LoginViewModel: ObservableObject {
-    @Published var password: ValidatedField
+    @Published
+    var password: ValidatedField<String>
+    
     @Published var canSubmit: Bool = false
     
     private var cancellables = Set<AnyCancellable>()
+    
+    init () {
+        self.password = ValidatedField(
+            .containsCapital, .containsDigit, .containsSpecialCharacter, .minLength(8)
+        )
         
-    init() {
-        let passwordRules = [
-            MinLengthValidationRule(8).asAny(),
-            SpecialCharacterValidationRule().asAny(),
-            CapitalLetterValidationRule().asAny(),
-            NumberCharacterValidationRule().asAny()
-        ]
-            
-        self.password = ValidatedField(validationRules: passwordRules)
-            
         setupSubmitValidation()
     }
     

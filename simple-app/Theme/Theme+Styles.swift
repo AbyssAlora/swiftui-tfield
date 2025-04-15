@@ -8,30 +8,28 @@
 import SwiftUI
 
 extension Theme {
-    static let light = Theme(
+    static let `default` = Theme(
         color: ThemeColor(
             surface: .init(
-                xHigh: Color(hex: "#8C8C9A"),
-                xLow: Color(hex: "#FFFFFF"),
-                brand: Color(hex: "#0050FF"),
-                danger: Color(hex: "#DC2828"),
-                dangerVariant: Color(hex: "#FFDCDC"),
-                warning: Color(hex: "#A56315"),
-                warningVariant: Color(hex: "#FAF1B6")
+                xHigh: Color("surface.xHigh"),
+                xLow: Color("surface.xLow"),
+                brand: Color("surface.brand"),
+                danger: Color("surface.danger"),
+                dangerVariant: Color("surface.dangerVariant"),
+                warning: Color("surface.warning"),
+                warningVariant: Color("surface.warningVariant")
             ),
             content: .init(
-                onNeutralXXHigh: Color(hex: "#2C2C31"),
-                onNeutralMedium: Color(hex: "#8C8C9A"),
-                onNeutralLow: Color(hex: "#C9C9CE"),
-                onNeutralDanger: Color(hex: "#DC2828"),
-                onNeutralWarning: Color(hex: "#A56315")
+                onNeutralXXHigh: Color("content.onNeutralXXHigh"),
+                onNeutralMedium: Color("content.onNeutralMedium"),
+                onNeutralLow: Color("content.onNeutralLow"),
+                onNeutralDanger: Color("content.onNeutralDanger"),
+                onNeutralWarning: Color("content.onNeutralWarning")
             ),
             state: .init(
-                hover: Color(hex: "#1A1A1A0F"),
-                focus: Color(hex: "#1A1A1ACC")
+                hover: Color("state.hover"),
+                focus: Color("state.focus")
             )
         )
     )
-
-    static let dark = Theme.light
 }

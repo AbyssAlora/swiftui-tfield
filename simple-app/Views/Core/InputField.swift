@@ -22,7 +22,7 @@ struct InputFieldStyleConfig {
 struct InputField: View {
     var placeholder: String
     @Binding var text: String
-    @Binding var error: String?
+    @Binding var error: [String]?
     
     var label: String?
     var optional: Bool = false
@@ -86,7 +86,7 @@ struct InputField: View {
                 RoundedRectangle(cornerRadius: style.cornerRadius)
                     .stroke(error == nil ? style.borderColor : style.warningColor, lineWidth: style.borderWidth)
             )
-            
+
             if let caption = caption {
                 Text(caption)
                     .font(.caption)

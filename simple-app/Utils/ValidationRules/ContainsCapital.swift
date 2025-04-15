@@ -7,18 +7,12 @@
 
 import Foundation
 
-struct CapitalLetterValidationRule: ValidationRule {
-    typealias Input = String
-
-    let errorMessage: String
-
-    init(errorMessage: String = "Must contain at least one uppercase letter.") {
-        self.errorMessage = errorMessage
-    }
+struct ContainsCapital: ValidationRule {
+    typealias Value = String
 
     func validate(_ input: String) -> String? {
         let capitalLetterRegex = #".*[A-Z]+.*"#
         let predicate = NSPredicate(format: "SELF MATCHES %@", capitalLetterRegex)
-        return predicate.evaluate(with: input) ? nil : errorMessage
+        return predicate.evaluate(with: input) ? nil : "Must contain a capital letter"
     }
 }

@@ -10,7 +10,7 @@ import SwiftUI
 struct PasswordField: View {
     var placeholder: String
     @Binding var text: String
-    @Binding var error: String?
+    @Binding var error: [String]?
     var caption: String?
     var label: String?
         

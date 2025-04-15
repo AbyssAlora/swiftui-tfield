@@ -12,7 +12,7 @@ enum InputFieldStyle {
 }
 
 extension InputFieldStyle {
-    func config(_ theme: Theme = .light) -> InputFieldStyleConfig {
+    func config(_ theme: Theme = .default) -> InputFieldStyleConfig {
         switch self {
         case .default, .primary:
             return InputFieldStyleConfig(

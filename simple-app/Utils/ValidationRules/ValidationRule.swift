@@ -7,13 +7,8 @@
 
 import Foundation
 
-protocol ValidationRule {
-    associatedtype Input
-    func validate(_ input: Input) -> String?
+protocol ValidationRule<Value> {
+    associatedtype Value
+    func validate(_ value: Value) -> String?
 }
 
-extension ValidationRule where Input == String {
-    func asAny() -> AnyValidationRule<String> {
-        .init(self)
-    }
-}
