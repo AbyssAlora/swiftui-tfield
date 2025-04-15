@@ -7,12 +7,13 @@
 
 import SwiftUI
 
-struct PasswordField: View {
+struct PasswordInput: View {
     var placeholder: String
     @Binding var text: String
     @Binding var error: [String]?
     var caption: String?
     var label: String?
+    var showPassword: Bool = false
         
     var body: some View {
         InputField(
@@ -21,12 +22,13 @@ struct PasswordField: View {
             error: $error,
             label: label,
             caption: caption,
+            showPassword: showPassword,
             isSecure: true
         )
     }
 }
 
 #Preview(traits: .sizeThatFitsLayout) {
-    PasswordField(placeholder: "Password", text: .constant(""),  error: .constant(nil))
+    PasswordInput(placeholder: "Password", text: .constant(""),  error: .constant(nil))
         .padding()
 }

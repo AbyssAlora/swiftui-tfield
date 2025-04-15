@@ -17,8 +17,15 @@ class LoginViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     init () {
+//        self.password = ValidatedField(
+//            .containsCapital,
+//            .containsDigit,
+//            .containsSpecialCharacter,
+//            .minLength(8)
+//        ).ignoreEmpty()
+        
         self.password = ValidatedField(
-            .containsCapital, .containsDigit, .containsSpecialCharacter, .minLength(8)
+            .strongPassword
         )
         
         setupSubmitValidation()

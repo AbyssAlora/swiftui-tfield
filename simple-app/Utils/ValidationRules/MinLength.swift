@@ -9,7 +9,11 @@ struct MinLength: ValidationRule {
     typealias Value = String
     let min: Int
 
-    func validate(_ value: String) -> String? {
-        value.count >= min ? nil : "Must be at least \(min) characters"
+    func validate(_ value: Value) -> String? {
+        if value.isEmpty {
+            return nil
+        }
+        
+        return value.count >= min ? nil : "Error.MinLength".localized(min)
     }
 }

@@ -10,10 +10,13 @@ import Foundation
 struct ContainsSpecialCharacter: ValidationRule {
     typealias Input = String
     
-    
     func validate(_ input: String) -> String? {
-        let specialCharacterRegex = #".*[!@#$%^&*(),.?":{}|<>].*"#
+        if input.isEmpty {
+            return nil
+        }
+        
+        let specialCharacterRegex = #".*[!@#$%^&*(),.?":{}|<>=].*"#
         let predicate = NSPredicate(format: "SELF MATCHES %@", specialCharacterRegex)
-        return predicate.evaluate(with: input) ? nil : "Password must contain at least one special character."
+        return predicate.evaluate(with: input) ? nil : "Error.ContainsSpecialCharacter".localized
     }
 }

@@ -33,3 +33,41 @@ extension Theme {
         )
     )
 }
+
+
+struct Radius {
+    let input: CGFloat = 12
+}
+
+struct Spacing {
+    let xs: CGFloat = 8
+    let s: CGFloat = 12
+    let m: CGFloat = 16
+    let l: CGFloat = 20
+}
+
+struct Typography {
+    struct FontStyle {
+        let font: Font
+        let lineHeight: CGFloat
+        let letterSpacing: CGFloat
+    }
+
+    let labelM = FontStyle(
+        font: .custom("Inter", size: 16).weight(.medium),
+        lineHeight: 22,
+        letterSpacing: 0.16
+    )
+
+    let labelS = FontStyle(
+        font: .custom("Inter", size: 14).weight(.semibold),
+        lineHeight: 17,
+        letterSpacing: 0.16
+    )
+
+    let bodyM = FontStyle(
+        font: .custom("Inter", size: 16).weight(.regular),
+        lineHeight: 22,
+        letterSpacing: 0.01
+    )
+}

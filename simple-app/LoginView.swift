@@ -12,12 +12,13 @@ struct LoginView: View {
     
     var body: some View {
         VStack {
-            PasswordField(
-                placeholder: "Password",
+            PasswordInput(
+                placeholder: "Password".localized,
                 text: $viewModel.password.value,
                 error: $viewModel.password.error,
-                caption: "Password must be at least 8 characters long, contain at least one uppercase letter, number and special character.",
-                label: "Password"
+                caption: "PasswordCaption".localized,
+                label: "Password".localized,
+                showPassword: false
             )
                 .useInputFieldStyle(.primary)
         }
@@ -25,6 +26,6 @@ struct LoginView: View {
     }
 }
 
-#Preview {
+#Preview("English") {
     LoginView()
 }

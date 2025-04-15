@@ -15,7 +15,7 @@ extension InputFieldStyle {
     func config(_ theme: Theme = .default) -> InputFieldStyleConfig {
         switch self {
         case .default, .primary:
-            return InputFieldStyleConfig(
+            return .init(
                 background: theme.color.surface.xLow,
                 foreground: theme.color.content.onNeutralXXHigh,
                 placeholder: theme.color.content.onNeutralLow,

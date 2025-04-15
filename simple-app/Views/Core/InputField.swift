@@ -29,6 +29,7 @@ struct InputField: View {
     var caption: String?
     
     var leftIcon: String?
+    var showPassword: Bool = true
     
     @State var isSecure = false
     @State private var show = false
@@ -44,12 +45,16 @@ struct InputField: View {
                     if let label = label {
                         Text(label)
                             .font(theme.typography.labelM.font)
+                            .lineSpacing(theme.typography.labelM.lineHeight)
+                            .tracking(theme.typography.labelM.letterSpacing)
                             .foregroundColor(error == nil ? style.foreground : style.warningColor)
                     }
                     
                     if optional {
                         Text("Optional")
                             .font(theme.typography.labelS.font)
+                            .lineSpacing(theme.typography.labelS.lineHeight)
+                            .tracking(theme.typography.labelS.letterSpacing)
                             .foregroundColor(theme.color.content.onNeutralMedium)
                     }
                 }.padding(.vertical, theme.spacing.xs)
@@ -67,16 +72,14 @@ struct InputField: View {
                     .padding(.horizontal, theme.spacing.m)
                     .padding(.vertical, theme.spacing.s)
                 
-                if isSecure {
-                    showImage
-                        .contentTransition(.symbolEffect)
-                        .foregroundColor(style.iconTint)
-                        .padding(.trailing, theme.spacing.m)
-                        .frame(maxHeight: 24)
-                        .onTapGesture {
-                            self.show.toggle()
-                        }
-                }
+                showImage
+                    .contentTransition(.symbolEffect)
+                    .foregroundColor(style.iconTint)
+                    .padding(.trailing, theme.spacing.m)
+                    .frame(maxHeight: 24)
+                    .onTapGesture {
+                        self.show.toggle()
+                    }
             }
             .background(
                 RoundedRectangle(cornerRadius: style.cornerRadius)
@@ -100,9 +103,12 @@ struct InputField: View {
     private var inputField: some View {
         if isSecure {
             ZStack {
-                TextField(placeholder, text: $text)
-                    .textContentType(.password)
-                    .opacity(show ? 1 : 0)
+                if showPassword {
+                    TextField(placeholder, text: $text)
+                        .textContentType(.password)
+                        .opacity(show ? 1 : 0)
+                }
+                
                 SecureField(placeholder, text: $text)
                     .textContentType(.password)
                     .opacity(show ? 0 : 1)
@@ -114,7 +120,9 @@ struct InputField: View {
     
     @ViewBuilder
     private var showImage: some View {
-        Image(systemName: show ? "eye" : "eye.slash")
+        if isSecure && showPassword {
+            Image(systemName: show ? "eye" : "eye.slash")
+        }
     }
 }
 

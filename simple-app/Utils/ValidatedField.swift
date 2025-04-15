@@ -14,7 +14,7 @@ class ValidatedField<Value>: ObservableObject {
     
     private let rules: [AnyValidationRule<Value>]
     private var cancellables = Set<AnyCancellable>()
-    
+        
     private init(_ value: Value, rules: [AnyValidationRule<Value>]) {
         self.value = value
         self.rules = rules

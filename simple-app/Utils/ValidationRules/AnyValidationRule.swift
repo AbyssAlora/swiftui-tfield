@@ -35,4 +35,12 @@ extension AnyValidationRule where Value == String {
     static var containsSpecialCharacter: Self {
         AnyValidationRule(ContainsSpecialCharacter())
     }
+    
+    static var strongPassword: Self {
+        AnyValidationRule(StrongPassword())
+    }
+    
+    static var isNotEmpty: Self {
+        AnyValidationRule(IsNotEmpty())
+    }
 }
